@@ -32,7 +32,7 @@ from ctypes import *
 import os
 
 
-from distutils.sysconfig import get_config_var
+from sysconfig import get_config_var
 
 from sys import platform
 
@@ -310,7 +310,7 @@ class pyMAP(object):
                     libext = '.dll'
 
             maplib = '_libmap' + libext
-            dllFileName = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) + os.path.sep + maplib
+            dllFileName = os.path.dirname(os.path.abspath(__file__)) + os.path.sep + maplib
 
         # Load the library and setup C-interfaces
         lib = setupLib(dllFileName)
