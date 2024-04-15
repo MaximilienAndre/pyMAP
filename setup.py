@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # encoding: utf-8
 
-from setuptools import setup
-from numpy.distutils.core import setup, Extension
+from setuptools import setup, Extension
+# from numpy.distutils.core import setup, Extension
 import os
 import sys
 import platform
