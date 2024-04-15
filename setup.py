@@ -1,8 +1,7 @@
 #!/usr/bin/env python
 # encoding: utf-8
 
-from setuptools import setup
-from numpy.distutils.core import setup, Extension
+from setuptools import setup, Extension
 import os
 import sys
 import platform
@@ -21,28 +20,14 @@ else:
     #cflags = ['-O1', '-m64', '-fPIC', '-std=c99', '-D WITH_LAPACK']
     cflags = ['-O1', '-m64', '-fPIC', '-std=c99']
 
-pymapExt   = Extension('_libmap', sources=glob.glob(os.path.join('src','pymap','**','*.c'), recursive=True)+
-                       glob.glob(os.path.join('src','pymap','**','*.cc'), recursive=True),
+pymapExt   = Extension('pymap._libmap',
+                       sources=glob.glob(os.path.join('pymap','src','**','*.c'), recursive=True)+
+                       glob.glob(os.path.join('pymap','src','**','*.cc'), recursive=True),
                        extra_compile_args=cflags,
-                       include_dirs=[os.path.join('src','pymap','lapack')])
+                       include_dirs=[os.path.join('pymap','src','lapack')])
     
 setup(
-    name='pyMAP',
-    version='1.0.0',
-    description='Python module wrapping around MAP++',
-    author='NREL WISDEM Team',
-    author_email='systems.engineering@nrel.gov',
-    license='Apache License, Version 2.0',
-    package_dir={'': 'src'},
-    py_modules=['pymap'+os.sep+'pymap'],
-    package_data={'pymap': []},
-    packages=['pymap'],
     ext_modules=[pymapExt],
-    install_requires=[
-        'matplotlib', 
-        'numpy',
-    ],
-    zip_safe=False
 )
 
 
